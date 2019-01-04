@@ -1,0 +1,15 @@
+- name: build dicomsrv container
+  import_tasks: dicomsrv_build.yml
+  tags:
+    - imagebuild
+
+- name: pacs start
+  import_tasks: start_contasiners.yml
+  tags:
+    - start
+    - rebuilddb
+
+- name: rebuild dbase
+  import_tasks: rebuild_base.yml
+  tags:
+    - rebuilddb

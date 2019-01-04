@@ -1,0 +1,26 @@
+- name: start db container
+  docker_container:
+    name: "{{ pacs_db_container_name }}"
+    image: postgres:11
+    networks:
+      - name: "{{ docker_network }}"
+    env:
+      POSTGRES_DB: conquestdb
+      POSTGRES_USER: conquest
+      POSTGRES_PASSWORD: conquestpass
+
+- name: start dicom server
+  docker_container:
+    name: "{{ dicom_server_container_name }}"
+    image: dicomsrv:latest
+    ports:
+      - '104:5678'
+    volumes:
+      - '{{ medical_images_dir }}:/opt/conquest/data'
+    networks:
+      - name: "{{ docker_network }}"
+    env:
+      SQL_CONTAINER_NAME: "{{ pacs_db_container_name }}"
+      DB_NAME: conquestdb
+      DB_USERNAME: conquest
+      DB_PASSWORD: conquestpass

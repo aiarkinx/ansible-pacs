@@ -1,0 +1,19 @@
+#################### Docker vars #####################################
+### image buld vars ###
+dicom_server_image_name: dicomsrv:latest
+
+build_source_dir: /srv/dicomsrv_build_dir/
+
+owner_build_dir:
+
+### containers vars ###
+docker_network:
+
+pacs_db_container_name: pacsdb
+
+dicom_server_container_name: dicomsrv
+
+
+##################### DICOM server vars ##############################
+
+medical_images_dir: /srv/data/images

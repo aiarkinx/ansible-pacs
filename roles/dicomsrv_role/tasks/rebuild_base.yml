@@ -1,0 +1,2 @@
+- name: dicomsrv rebuild base
+  command: docker exec -ti {{ dicom_server_container_name }} ./dgate -v -r

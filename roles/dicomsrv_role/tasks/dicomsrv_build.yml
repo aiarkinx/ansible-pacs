@@ -1,0 +1,17 @@
+- name: create source dir
+  file:
+    path: "{{ build_source_dir }}"
+    state: directory
+    owner: "{{ owner_build_dir }}"
+    mode: 0755
+
+- name: git clone project
+  git:
+    repo: "https://github.com/Iarkin/conquest-docker.git"
+    dest: "{{ build_source_dir }}"
+
+- name: build dicomm server image
+  docker_image:
+    name: "{{ dicom_server_image_name }}"
+    state: present
+    path: "{{ build_source_dir }}/dicomsrv"

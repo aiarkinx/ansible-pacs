@@ -1,0 +1,7 @@
+- name: docker name create
+  docker_network:
+    name: "{{ docker_network }}"
+    driver: bridge
+    state: present
+  tags:
+    - start
