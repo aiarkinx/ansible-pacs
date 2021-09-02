@@ -11,4 +11,6 @@
     build_source_dir: /srv/dicomsrv_build_dir/
   roles:
     - docker_network_role
+    # - database_role
     - dicomsrv_role
+
